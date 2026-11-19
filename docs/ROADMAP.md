@@ -1,64 +1,71 @@
-# Nova Intelligence — Hoja de ruta inicial
+# Nova Intelligence — Hoja de ruta
 
 ## Objetivo
 
-Crear una aplicación Android de asistencia general llamada **Nova**, con una identidad propia y capacidad de conectarse con las aplicaciones del ecosistema.
+Crear una aplicación Android de asistencia general llamada **Nova**, con identidad propia y capacidad de conectarse con las aplicaciones del ecosistema.
 
-## Etapas propuestas
+## Versiones
 
-### 0. Base del proyecto
-- Repositorio y estructura Android.
-- Kotlin y Jetpack Compose.
-- Identidad visual inicial.
-- Configuración de compilación.
+### 0.1.0 — Base visual
+- Estructura Android con Kotlin y Jetpack Compose.
+- Tema cósmico oscuro e identidad inicial.
+- Pantalla de bienvenida.
 
-### 1. Interfaz y navegación
-- Inicio y conversación.
-- Historial.
-- Explorar.
-- Configuración.
-- Estados de carga, error y conexión.
+### 0.2.0 — Primer chat e integración de IA
+- Chat nativo con mensajes de usuario y asistente.
+- Estados de carga y error.
+- Configuración del endpoint de Nova Core.
+- Cliente de Gradio para comunicarse con un modelo real.
+- Backend de referencia con Qwen3-1.7B en Hugging Face ZeroGPU.
+- Límites de entrada e historial para el primer MVP.
 
-### 2. Nova Core
-- Capa central de coordinación.
-- Contrato común para proveedores de modelos.
-- Conexión segura a un backend.
-- Gestión de errores y límites.
+**Estado:** código preparado en el repositorio; la conexión real depende de publicar y activar el Space de Nova Core.
 
-### 3. Sistema multi-modelo
-- Proveedores intercambiables.
-- Modelo predeterminado.
-- Selección manual.
-- Enrutamiento por tipo de tarea.
+### 0.3.0 — Conversaciones
+- Guardar historial local con Room.
+- Crear, renombrar y eliminar conversaciones.
+- Recuperar conversaciones al reiniciar la app.
+- Mejoras de errores, reintentos y respuesta en streaming.
 
-### 4. Historial y memoria
-- Conversaciones guardadas.
-- Preferencias controladas por el usuario.
-- Ver, editar y borrar recuerdos.
-- Almacenamiento protegido.
+### 0.4.0 — Nova Core ampliado
+- Contrato común para proveedores.
+- Selector de modelo y proveedor.
+- Límites por proveedor y respuestas de disponibilidad.
+- Configuración segura de autenticación.
 
-### 5. Voz
+### 0.5.0 — Personalización y memoria
+- Preferencias editables.
+- Recuerdos bajo control del usuario.
+- Ver, editar, pausar y borrar recuerdos.
+
+### 0.6.0 — Herramientas
+- Búsqueda web con fuentes visibles.
+- Análisis de documentos e imágenes, según el modelo.
+- Herramientas y acciones con confirmación.
+
+### 0.7.0 — Voz
 - Entrada por voz.
 - Respuestas habladas.
-- Modo de conversación en tiempo real, según el proveedor disponible.
+- Modo de conversación, sujeto al proveedor disponible.
 
-### 6. Nova Connect
+### 0.8.0 — Nova Connect
 - Sistema de permisos y conexiones.
 - Contratos de integración.
-- Confirmación antes de ejecutar acciones importantes.
+- Registro de acciones y confirmación antes de ejecutar cambios importantes.
 
-### 7. Integraciones del ecosistema
-- Pulsar RM.
-- AstralWorld.
+### 0.9.0 — Ecosistema
+- Integración con Pulsar RM.
+- Integración con AstralWorld.
 - Aplicaciones futuras.
 
-## Alcance de la versión 0.1.0
-
-La primera base contiene el proyecto Android y una pantalla inicial de presentación. Todavía no incluye un modelo conectado, backend, memoria, voz ni integraciones.
+### 1.0.0 — Primera versión estable
+- Estabilidad, privacidad, accesibilidad y pruebas de compatibilidad.
+- Documentación y flujo de actualización.
 
 ## Reglas de seguridad
 
 - No incluir claves privadas de proveedores dentro del APK o del repositorio.
-- Las llamadas a modelos deben pasar por un backend protegido.
+- Las llamadas a modelos externos deben usar conexiones protegidas.
+- No enviar información personal sensible innecesaria.
 - Cada integración debe declarar permisos y acciones disponibles.
 - Nova debe pedir confirmación antes de acciones sensibles o difíciles de revertir.

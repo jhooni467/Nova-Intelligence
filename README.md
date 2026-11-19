@@ -13,16 +13,16 @@
 - Diseño: mezcla de estética cósmica, minimalismo y Liquid Glass
 - Inteligencia: arquitectura multi-modelo, con proveedores intercambiables
 
-## Estado actual — 0.1.0
+## Estado actual — 0.2.0
 
-Esta versión establece la base del proyecto:
+Esta versión incorpora la primera interfaz de conversación y un cliente para conectarse con un motor de IA externo mediante Hugging Face Spaces.
 
-- Estructura inicial de Android.
-- Tema oscuro y paleta visual de Nova.
-- Pantalla inicial con campo de texto y sugerencias.
-- Identificador de aplicación: `com.jhooni467.novaintelligence`.
+- Chat nativo con burbujas de mensaje.
+- Configuración de una URL de Nova Core.
+- Solicitudes al endpoint de Gradio y recepción de respuestas.
+- Backend de referencia en `nova-core/`, basado en Qwen3-1.7B y Hugging Face ZeroGPU.
 
-**Importante:** la pantalla actual es una primera interfaz. Nova Core todavía no está conectado a ningún modelo de IA; por eso el campo de conversación aún no envía mensajes reales.
+**Importante:** el APK puede compilarse sin credenciales, pero las respuestas reales requieren que el Space de Nova Core esté creado, activo y disponible. Sin esa URL, la app explica cómo configurar la conexión y no inventa respuestas.
 
 ## Tecnologías
 
@@ -31,7 +31,8 @@ Esta versión establece la base del proyecto:
 - Kotlin: 2.4.10
 - Jetpack Compose BOM: 2026.09.00
 - Activity Compose: 1.13.0
-- SDK objetivo y de compilación: 36
+- SDK objetivo: 36
+- SDK de compilación: 37 (preview)
 - SDK mínimo: 26
 - Java/JVM: 17
 
@@ -43,31 +44,36 @@ Nova-Intelligence/
 │   └── src/main/
 │       ├── java/com/jhooni467/novaintelligence/
 │       │   ├── MainActivity.kt
+│       │   ├── NovaSpaceClient.kt
 │       │   └── ui/theme/NovaTheme.kt
 │       └── res/
+├── nova-core/
+│   ├── app.py
+│   ├── requirements.txt
+│   └── README.md
 ├── docs/
-│   └── ROADMAP.md
+│   ├── ROADMAP.md
+│   └── AI_MVP_PLAN.md
 ├── gradle/
-│   └── libs.versions.toml
-├── build.gradle.kts
-├── settings.gradle.kts
+├── .github/workflows/android.yml
 └── README.md
 ```
 
-## Evolución prevista
+## Cómo activar la IA
 
-1. Interfaz y navegación.
-2. Nova Core y backend seguro.
-3. Sistema multi-modelo.
-4. Historial y memoria.
-5. Voz.
-6. Nova Connect.
-7. Integración con Pulsar RM y AstralWorld.
+El backend de referencia usa Hugging Face ZeroGPU y el modelo abierto Qwen3-1.7B. Consulta [nova-core/README.md](nova-core/README.md) y [docs/AI_MVP_PLAN.md](docs/AI_MVP_PLAN.md) para los pasos y límites actuales.
+
+La cuota de ZeroGPU es limitada y puede haber cola o suspensión por inactividad. Las cuentas gratuitas que alojan su propio Space deben cumplir los requisitos actuales de Hugging Face, incluida antigüedad y verificación de cuenta. No se requiere una API key de pago ni se deben introducir tokens en la APK.
 
 ## Seguridad
 
-Las claves de los proveedores de IA no deben guardarse en la aplicación Android ni subirse al repositorio. Las integraciones se realizarán mediante servicios protegidos y permisos explícitos.
+- No incluir claves privadas de proveedores dentro de la APK o del repositorio.
+- No introducir tokens en el código fuente.
+- Validar las direcciones del backend y limitar el tamaño del historial.
+- No enviar datos personales o confidenciales a un servicio externo.
+- Cada integración debe declarar permisos y acciones disponibles.
+- Nova debe pedir confirmación antes de acciones sensibles o difíciles de revertir.
 
-## Documentación
+## Hoja de ruta
 
-Consulta [docs/ROADMAP.md](docs/ROADMAP.md) para conocer las etapas de desarrollo.
+Consulta [docs/ROADMAP.md](docs/ROADMAP.md) para conocer las próximas etapas.
