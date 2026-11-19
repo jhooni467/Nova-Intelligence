@@ -95,7 +95,19 @@ internal object NovaSpaceClient {
             body = null
         )
 
-        val resultData = eventResponse.lineSequence()
+        val eventLines = eventResponse.lineSequence().toList()
+        val finalEvent = eventLines
+            .lastOrNull { it.startsWith("event:") }
+            ?.substringAfter("event:")
+            ?.trim()
+
+        if (finalEvent == "error") {
+            throw IOException(
+                "Nova Core no pudo generar la respuesta. Puede estar iniciando, en cola o sin cuota disponible."
+            )
+        }
+
+        val resultData = eventLines
             .filter { it.startsWith("data:") }
             .map { it.substringAfter("data:").trim() }
             .lastOrNull { it.isNotBlank() && it != "null" }
