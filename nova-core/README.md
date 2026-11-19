@@ -38,7 +38,7 @@ El Space debe usar el SDK **Gradio** y el hardware **ZeroGPU**. La implementaci�
 5. Espera a que termine la construcción y la carga del modelo.
 6. Copia la dirección de la aplicación que termina en **.hf.space** y agrégala en la configuración de Nova.
 
-Guía paso a paso desde Android: [docs/NOVA_CORE_DEPLOYMENT.md](../docs/NOVA_CORE_DEPLOYMENT.md).
+Guía paso a paso desde Android: [Guía de publicación desde Android](https://github.com/jhooni467/Nova-Intelligence/blob/main/docs/NOVA_CORE_DEPLOYMENT.md).
 
 ## Requisitos de la cuenta y límites gratuitos
 
