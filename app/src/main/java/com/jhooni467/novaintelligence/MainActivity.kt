@@ -104,7 +104,7 @@ private fun NovaHomeScreen() {
                 Spacer(modifier = Modifier.height(24.dp))
 
                 Text(
-                    text = "Hola, soy Nova.",
+                    text = "¿Qué hacemos hoy?",
                     color = NovaColors.TextPrimary,
                     fontSize = 30.sp,
                     fontWeight = FontWeight.Bold,
@@ -114,7 +114,7 @@ private fun NovaHomeScreen() {
                 Spacer(modifier = Modifier.height(8.dp))
 
                 Text(
-                    text = "¿Qué exploramos hoy?",
+                    text = "Cuéntame qué tienes en mente.",
                     color = NovaColors.PurpleBright,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Medium,
@@ -124,7 +124,7 @@ private fun NovaHomeScreen() {
                 Spacer(modifier = Modifier.height(10.dp))
 
                 Text(
-                    text = "Tu espacio para conversar, crear ideas y descubrir cosas nuevas.",
+                    text = "Podemos resolver algo, darle forma a una idea o descubrir algo nuevo.",
                     color = NovaColors.TextSecondary,
                     fontSize = 14.sp,
                     textAlign = TextAlign.Center,
